@@ -1,7 +1,7 @@
 const game = () => {
   let pScore = 0;
   let cScore = 0;
-
+  const winner = document.querySelector(".winner");
   const startGame = () => {
     const playBtn = document.querySelector(".intro button");
     const introScreen = document.querySelector(".intro");
@@ -42,6 +42,25 @@ const game = () => {
 
         playerHand.style.animation = "shakePlayer 2s ease";
         computerHand.style.animation = "shakeComputer 2s ease";
+
+      if(pScore == 3 || cScore == 3)
+      {
+        if(pScore == 3)
+        {
+          winner.textContent = "Player Wins the 3 Round Game";
+          pScore = 0;
+        }
+        else if(cScore == 3)
+        {
+          winner.textContent = "Computer Wins the 3 Round Game";
+          pScore = 0;
+          cScore = 0;
+          cScore = 0;
+        }
+        console.log(pScore);
+        console.log(cScore);
+        game();
+      }
       });
     });
 
@@ -53,9 +72,6 @@ const game = () => {
     };
 
     const compareHands = (playerChoice, computerChoice) => {
-      const winner = document.querySelector(".winner");
-      console.log(playerChoice);
-
       // FOR SAME CHOICE
       if (playerChoice == computerChoice) {
         winner.textContent = "It's Draw Play Again";
